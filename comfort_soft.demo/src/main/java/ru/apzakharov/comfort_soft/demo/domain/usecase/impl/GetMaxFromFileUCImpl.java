@@ -1,25 +1,29 @@
 package ru.apzakharov.comfort_soft.demo.domain.usecase.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.apzakharov.comfort_soft.demo.domain.exepction.UseCaseException;
+import org.springframework.stereotype.Service;
+import ru.apzakharov.comfort_soft.demo.application.annotation.UseCase;
+import ru.apzakharov.comfort_soft.demo.application.exepction.UseCaseException;
 import ru.apzakharov.comfort_soft.demo.domain.usecase.GetMaxFromFileUC;
 import ru.apzakharov.comfort_soft.demo.ports.LocalFilePort;
 
 import java.io.FileInputStream;
 import java.util.Arrays;
 
+@UseCase
+@RequiredArgsConstructor
 public class GetMaxFromFileUCImpl implements GetMaxFromFileUC {
 
-    @Autowired
-    private LocalFilePort filePort;
+    private final LocalFilePort filePort;
 
     @Override
-    public int getMaxFromFileUC(String path, int boundary) {
+    public Integer getMaxFromFileUC(String path, int boundary) {
         try {
             FileInputStream fileInputStream = filePort.fileStream(path);
             Workbook workbook = new XSSFWorkbook(fileInputStream);

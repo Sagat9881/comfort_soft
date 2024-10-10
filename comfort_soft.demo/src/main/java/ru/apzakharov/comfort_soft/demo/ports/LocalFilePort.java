@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-@Port
 public interface LocalFilePort {
 
     File getFromPath(String path);

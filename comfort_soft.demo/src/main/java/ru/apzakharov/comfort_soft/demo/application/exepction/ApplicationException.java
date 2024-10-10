@@ -1,6 +1,10 @@
-package ru.apzakharov.comfort_soft.demo.domain.exepction;
+package ru.apzakharov.comfort_soft.demo.application.exepction;
+
+import lombok.Getter;
 
 public abstract class ApplicationException extends RuntimeException {
+
+    @Getter
     private final String layout;
 
     public ApplicationException(Exception e, String layout) {

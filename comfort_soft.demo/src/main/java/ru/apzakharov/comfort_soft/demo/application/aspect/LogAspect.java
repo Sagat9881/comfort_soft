@@ -20,12 +20,14 @@ public class LogAspect {
     }
 
     @Around("useCasePointcut()")
-    public void beforeCallAt(ProceedingJoinPoint pjp) throws Throwable {
+    public Object aroundCallAt(ProceedingJoinPoint pjp) throws Throwable {
         Object useCase = pjp.getTarget();
         Object[] useCaseArgs = pjp.getArgs();
 
         log.info("Use case: {} with args: {} started", useCase.getClass().getSimpleName(), Arrays.toString(useCaseArgs));
         Object proceed = pjp.proceed(useCaseArgs);
         log.info("Use case: {} with args: {} finished result: {}", useCase.getClass().getSimpleName(), Arrays.toString(useCaseArgs), proceed);
+
+        return proceed;
     }
 }

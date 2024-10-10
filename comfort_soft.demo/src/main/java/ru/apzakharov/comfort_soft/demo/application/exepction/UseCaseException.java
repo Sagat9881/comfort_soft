@@ -1,7 +1,7 @@
-package ru.apzakharov.comfort_soft.demo.domain.exepction;
+package ru.apzakharov.comfort_soft.demo.application.exepction;
 
 public class UseCaseException extends ApplicationException {
-    private static final String LAYER = "UseCase";
+    public static final String LAYER = "UseCase";
 
     public UseCaseException(Exception e) {
         super(e, LAYER);
